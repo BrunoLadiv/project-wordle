@@ -10,10 +10,11 @@ function Form() {
   return (
     <form
       onSubmit={handleSubmit}
-      class="guess-input-wrapper"
+      className="guess-input-wrapper"
     >
-      <label for="guess-input">Enter guess:</label>
+      <label htmlFor="guess-input">Enter guess:</label>
       <input
+        required
         pattern=".{5,}"
         maxlength="5"
         title="Please enter 5 characters"
