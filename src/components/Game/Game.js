@@ -4,7 +4,9 @@ import { sample } from '../../utils'
 import { WORDS } from '../../data'
 import Form from '../Form'
 import GuessResults from '../GuessResults'
-
+import Guess from '../Guess'
+import { range } from '../../utils'
+import { NUM_OF_GUESSES_ALLOWED } from '../../constants'
 // Pick a random word on every pageload.
 const answer = sample(WORDS)
 // To make debugging easier, we'll log the solution in the console.
@@ -14,8 +16,15 @@ function Game() {
   const [guesses, setGuesses] = React.useState([])
   return (
     <>
-      <GuessResults guesses={guesses}/>
-      <Form guesses={guesses} setGuesses={setGuesses} />
+      <GuessResults>
+        {range(NUM_OF_GUESSES_ALLOWED).map((i) => {
+          return <Guess guessObj={guesses[i]} />
+        })}
+      </GuessResults>
+      <Form
+        guesses={guesses}
+        setGuesses={setGuesses}
+      />
     </>
   )
 }
