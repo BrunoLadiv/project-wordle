@@ -1,36 +1,39 @@
 import React from 'react'
 import { checkGuess } from '../../game-helpers'
+import { range } from '../../utils'
 
-function Guess({ guessObj, answer }) {
+function Guess({ guessObj, answer, guessLeng, setGameStatus }) {
+  
   let cssClassArray
   if (guessObj) {
     cssClassArray = checkGuess(guessObj.guess, answer)
   }
+  const gameWon =
+    cssClassArray && cssClassArray.every((item) => item.status === 'correct')
+  const gameLost = guessLeng >= 6
+  if (gameWon) {
+    setGameStatus(true)
+    
+  } else if (gameLost) {
+    setGameStatus(false)
+  }
+  
+
 
   return (
     <p
       key={guessObj && guessObj.id}
       className="guess"
     >
-      <span className={`cell ${cssClassArray && cssClassArray[0].status}`}>
-        {guessObj && guessObj.guess[0]}
-      </span>
-      <span className={`cell ${cssClassArray && cssClassArray[1].status}`}>
-        {guessObj && guessObj.guess[1]}
-      </span>
-      <span className={`cell ${cssClassArray && cssClassArray[2].status}`}>
-        {guessObj && guessObj.guess[2]}
-      </span>
-      <span className={`cell ${cssClassArray && cssClassArray[3].status}`}>
-        {guessObj && guessObj.guess[3]}
-      </span>
-      <span className={`cell ${cssClassArray && cssClassArray[4].status}`}>
-        {guessObj && guessObj.guess[4]}
-      </span>
+      {range(5).map((i) => {
+        return (
+          <span className={`cell ${cssClassArray && cssClassArray[i].status}`}>
+            {guessObj && guessObj.guess[i]}
+          </span>
+        )
+      })}
     </p>
   )
 }
-
-
 
 export default Guess

@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Form({ guesses, setGuesses }) {
+function Form({ guesses, setGuesses, gameStatus }) {
   const [inputValue, setInputValue] = React.useState('')
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -15,6 +15,7 @@ function Form({ guesses, setGuesses }) {
     >
       <label htmlFor="guess-input">Enter guess:</label>
       <input
+        disabled={gameStatus !== null && true}
         required
         pattern=".{5,}"
         maxLength="5"
