@@ -1,10 +1,11 @@
 import React from 'react'
 
-function Form() {
+function Form({ guesses, setGuesses }) {
   const [inputValue, setInputValue] = React.useState('')
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log(inputValue)
+    const newGuess = {id: crypto.randomUUID(), guess: inputValue}
+    setGuesses([...guesses, newGuess])
     setInputValue('')
   }
   return (
