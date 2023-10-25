@@ -2,7 +2,7 @@ import React from 'react'
 
 function GuessResults({ children }) {
   return (
-    <div class="guess-results">
+    <div className="guess-results">
       {children }
       
     </div>

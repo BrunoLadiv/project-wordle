@@ -17,7 +17,7 @@ function Form({ guesses, setGuesses }) {
       <input
         required
         pattern=".{5,}"
-        maxlength="5"
+        maxLength="5"
         title="Please enter 5 characters"
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value.toUpperCase())}

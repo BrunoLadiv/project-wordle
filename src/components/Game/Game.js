@@ -18,7 +18,7 @@ function Game() {
     <>
       <GuessResults>
         {range(NUM_OF_GUESSES_ALLOWED).map((i) => {
-          return <Guess guessObj={guesses[i]} />
+          return <Guess key={i} guessObj={guesses[i]} answer={answer} />
         })}
       </GuessResults>
       <Form
