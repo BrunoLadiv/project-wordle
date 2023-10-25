@@ -21,11 +21,14 @@ html {
   Custom styles
 */
 body {
+  background-color: black;
+  color: white;
   font-family: sans-serif;
 }
 
 @media (max-height: 600px) {
   body {
+
     --game-spacing: 8px;
   }
 }
